@@ -18,16 +18,15 @@
             <name>Spark-FileCopy</name>
             <class>SparkFileCopy</class>
             <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example.jar</jar>
-            <arg>${nameNode}/user/oozie/input-data/</arg>
-            <arg>${nameNode}/user/oozie/output-data/</arg>
+            <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data/</arg>
+            <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data/</arg>
         </spark>
         <ok to="end" />
         <error to="fail" />
     </action>
 
     <kill name="fail">
-        <message>Workflow failed, error
-            message[${wf:errorMessage(wf:lastErrorNode())}]
+        <message>Workflow failed, error message[${wf:errorMessage(wf:lastErrorNode())}]
         </message>
     </kill>
     <end name='end' />
