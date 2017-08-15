@@ -9,3 +9,4 @@ hdfs dfs -rm -R -f "$HDIR"
 echo "Uploading new content to HDFS:$HDIR"
 hdfs dfs -put "." "$HDIR"
 
+echo "Now you can start the job by typing bin/run.sh"

@@ -10,8 +10,10 @@
 
     <packaging>jar</packaging>
 
+    <description>Example demonstrating use of Spark job with Oozie</description>
+
     <build>
-        <finalName>${project.name}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <plugins>
             <plugin>
@@ -55,6 +57,7 @@
             <groupId>org.apache.oozie</groupId>
             <artifactId>oozie-core</artifactId>
             <version>4.2.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
