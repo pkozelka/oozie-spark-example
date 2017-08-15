@@ -7,8 +7,8 @@ build:
 	mvn clean verify
 
 deploy:
-	scp -P $(OOZIE_PORT) target/oozie-spark-example-bundle.tar.gz $(OOZIE_USERHOST):/tmp/
-	ssh -p $(OOZIE_PORT) $(OOZIE_USERHOST) 'tar zxf /tmp/oozie-spark-example-bundle.tar.gz -C ~/applications && cd ~/applications/oozie-spark-example && ./bin/init.sh'
+	cat target/oozie-spark-example-bundle.tar.gz | \
+	  ssh -p $(OOZIE_PORT) $(OOZIE_USERHOST) 'tar zx -C ~/applications && cd ~/applications/oozie-spark-example && ./bin/init.sh'
 
 run-remote:
 	ssh -p $(OOZIE_PORT) $(OOZIE_USERHOST) 'cd ~/applications/oozie-spark-example && ./bin/run.sh'
