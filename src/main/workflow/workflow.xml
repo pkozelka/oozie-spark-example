@@ -17,7 +17,7 @@
             <master>${master}</master>
             <name>Spark-FileCopy</name>
             <class>SparkFileCopy</class>
-            <jar>${nameNode}/apps/oozie/oozie-example/lib/oozie-example.jar</jar>
+            <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example.jar</jar>
             <arg>${nameNode}/user/oozie/input-data/</arg>
             <arg>${nameNode}/user/oozie/output-data/</arg>
         </spark>
