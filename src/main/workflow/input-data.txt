@@ -1,0 +1,6 @@
+This is a file on input-data directory, which will be transferred to the output-data.
+
+You can check that with following commands:
+
+hdfs dfs -ls /apps/oozie/oozie-spark-example
+hdfs dfs -cat /apps/oozie/oozie-spark-example/output-data.txt

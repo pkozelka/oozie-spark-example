@@ -13,13 +13,18 @@
                     <name>oozie.use.system.libpath</name>
                     <value>true</value>
                 </property>
+                <property>
+                    <!-- https://stackoverflow.com/a/25772041/455449 -->
+                    <name>yarn.application.classpath</name>
+                    <value>$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*</value>
+                </property>
             </configuration>
             <master>${master}</master>
             <name>Spark-FileCopy</name>
             <class>SparkFileCopy</class>
             <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example.jar</jar>
-            <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data/</arg>
-            <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data/</arg>
+            <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data.txt</arg>
+            <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data.txt</arg>
         </spark>
         <ok to="end" />
         <error to="fail" />
@@ -27,6 +32,7 @@
 
     <kill name="fail">
         <message>Workflow failed, error message[${wf:errorMessage(wf:lastErrorNode())}]
+            INFO: wf:actionData('myJavaAction')['exceptionTrace']
         </message>
     </kill>
     <end name='end' />
