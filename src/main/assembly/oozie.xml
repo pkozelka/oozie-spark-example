@@ -18,9 +18,6 @@
         <fileSet>
             <directory>${project.basedir}/src/main/workflow</directory>
             <outputDirectory>.</outputDirectory>
-            <excludes>
-                <exclude>*/**.properties</exclude>
-            </excludes>
         </fileSet>
         <fileSet>
             <directory>${project.build.directory}</directory>
@@ -30,16 +27,4 @@
             </includes>
         </fileSet>
     </fileSets>
-    <!-- Filter the .properties files to set namenode and jobtracker urls -->
-    <files>
-        <file>
-            <source>${project.basedir}/src/main/workflow/job.properties</source>
-            <filtered>true</filtered>
-        </file>
-        <file>
-            <source>${project.basedir}/src/main/workflow/coordinator/coord.properties</source>
-            <outputDirectory>coordinator</outputDirectory>
-            <filtered>true</filtered>
-        </file>
-    </files>
 </assembly>
