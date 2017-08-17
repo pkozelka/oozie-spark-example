@@ -6,23 +6,19 @@
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
             <prepare>
-                <delete path="${nameNode}/user/oozie/output-data/"/>
+                <delete path="${nameNode}/apps/oozie/oozie-spark-example/output-data.txt"/>
             </prepare>
             <configuration>
                 <property>
                     <name>oozie.use.system.libpath</name>
                     <value>true</value>
                 </property>
-                <property>
-                    <!-- https://stackoverflow.com/a/25772041/455449 -->
-                    <name>yarn.application.classpath</name>
-                    <value>$HADOOP_COMMON_HOME/*,$HADOOP_COMMON_HOME/lib/*</value>
-                </property>
             </configuration>
             <master>${master}</master>
             <name>Spark-FileCopy</name>
             <class>SparkFileCopy</class>
             <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example.jar</jar>
+            <spark-opts>--conf spark.driver.extraJavaOptions=“-verbose:class”</spark-opts>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data.txt</arg>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data.txt</arg>
         </spark>
@@ -32,7 +28,6 @@
 
     <kill name="fail">
         <message>Workflow failed, error message[${wf:errorMessage(wf:lastErrorNode())}]
-            INFO: wf:actionData('myJavaAction')['exceptionTrace']
         </message>
     </kill>
     <end name='end' />
