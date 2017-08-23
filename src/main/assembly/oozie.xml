@@ -6,8 +6,6 @@
     <formats>
         <format>tar.gz</format>
     </formats>
-    <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>${project.artifactId}</baseDirectory>
     <dependencySets>
         <dependencySet>
             <scope>runtime</scope>
@@ -18,13 +16,6 @@
         <fileSet>
             <directory>${project.basedir}/src/main/workflow</directory>
             <outputDirectory>.</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>${project.build.directory}</directory>
-            <outputDirectory>lib</outputDirectory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
         </fileSet>
     </fileSets>
 </assembly>
