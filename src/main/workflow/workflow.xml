@@ -17,8 +17,14 @@
             <master>${master}</master>
             <name>Spark-FileCopy</name>
             <class>SparkFileCopy</class>
-            <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example.jar</jar>
-            <spark-opts>--conf spark.driver.extraJavaOptions=“-verbose:class”</spark-opts>
+            <jar>${nameNode}/apps/oozie/oozie-spark-example/lib/oozie-spark-example-1.0-SNAPSHOT.jar</jar>
+            <!-- exitcode 143 = OutOfMemory
+            https://gsamaras.wordpress.com/code/spark-container-exited-with-a-non-zero-exit-code-143/
+            -->
+            <spark-opts>--executor-memory 1G --driver-memory 1G
+                --conf 'spark.driver.extraJavaOptions=-XX:+UseCompressedOops -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -verbose:class -Xmx1G'
+                --conf 'spark.executor.extraJavaOptions=-XX:+UseCompressedOops -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintHeapAtGC -verbose:class -Xmx1G'
+            </spark-opts>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data.txt</arg>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data.txt</arg>
         </spark>
