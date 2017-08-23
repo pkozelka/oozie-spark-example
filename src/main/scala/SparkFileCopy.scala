@@ -9,12 +9,17 @@ object SparkFileCopy {
 
     import org.apache.spark._
 
+    System.out.println("--- STARTING ---")
+    System.err.println("--- starting ---")
+
     val conf = new SparkConf().setAppName("Oozie Example Spark Job")
     val sc = new SparkContext(conf)
 
     val lines = sc.textFile(input)
     lines.saveAsTextFile(output)
 
+    System.out.println("--- STOPPING ---")
+    System.err.println("--- stopping ---")
     sc.stop()
   }
 }
