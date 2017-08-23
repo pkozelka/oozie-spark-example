@@ -1,4 +1,4 @@
-class SparkFileCopy{
+object SparkFileCopy {
   def main(args: Array[String]): Unit = {
     if(args.length < 2) {
       System.err.println("Usage: SparkFileCopy <file> <file>")
@@ -16,6 +16,5 @@ class SparkFileCopy{
     lines.saveAsTextFile(output)
 
     sc.stop()
-
   }
 }
