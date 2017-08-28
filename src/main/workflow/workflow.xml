@@ -13,6 +13,10 @@
                     <name>oozie.use.system.libpath</name>
                     <value>true</value>
                 </property>
+                <property>
+                    <name>oozie.launcher.mapreduce.map.java.opts</name>
+                    <value>-verbose</value>
+                </property>
             </configuration>
             <master>${master}</master>
             <name>Spark-FileCopy</name>
@@ -22,8 +26,8 @@
             https://gsamaras.wordpress.com/code/spark-container-exited-with-a-non-zero-exit-code-143/
             -->
             <spark-opts>--executor-memory 1G --driver-memory 1G
-                --conf 'spark.driver.extraJavaOptions=-XX:+UseCompressedOops -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -verbose:class -Xmx1G'
-                --conf 'spark.executor.extraJavaOptions=-XX:+UseCompressedOops -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintHeapAtGC -verbose:class -Xmx1G'
+                --conf 'spark.driver.extraJavaOptions=-verbose:class -Xmx1G'
+                --conf 'spark.executor.extraJavaOptions=-XX:+PrintHeapAtGC -verbose:class -Xmx1G'
             </spark-opts>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/input-data.txt</arg>
             <arg>${nameNode}/apps/oozie/oozie-spark-example/output-data.txt</arg>
